@@ -1,0 +1,24 @@
+const { responseFlags } = require("../utils/constants")
+const logger = require("../utils/logger")
+const { errorResponse } = require("../utils/responseHelpers")
+
+module.exports = function errorHandler(error, req, res, next) {
+  logger.error(
+    `
+    \x1b[31m${error.stack}\x1b[0m
+    Req.Body: ${JSON.stringify(req.body, replacer)}
+    Req.Params: ${JSON.stringify(req.params, replacer)}
+    Req.Query: ${JSON.stringify(req.query, replacer)}
+    Req.Method: ${req.method}
+    Req.Path: ${req.path}
+    `,
+  )
+  return errorResponse(res, responseFlags[error.name], error)
+}
+
+function replacer(key, value) {
+  if (key.match(/password/gi) && value) {
+    return "**********"
+  }
+  return value
+}
