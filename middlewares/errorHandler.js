@@ -1,4 +1,4 @@
-const { responseFlags } = require("../utils/constants")
+const { responseFlags, CustomError } = require("../utils/constants")
 const logger = require("../utils/logger")
 const { errorResponse } = require("../utils/responseHelpers")
 
@@ -13,7 +13,9 @@ module.exports = function errorHandler(error, req, res, next) {
     Req.Path: ${req.path}
     `,
   )
-  return errorResponse(res, responseFlags[error.name], error)
+  const flagName =
+    error instanceof CustomError ? error.name : "INTERNAL_SERVER_ERR"
+  return errorResponse(res, responseFlags[flagName], error)
 }
 
 function replacer(key, value) {
