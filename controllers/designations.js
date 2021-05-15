@@ -24,7 +24,7 @@ module.exports = function () {
         description,
         code,
         createdBy,
-        updatedBy: createdByOnModel,
+        updatedBy: createdBy,
         createdByOnModel,
         updatedByOnModel: createdByOnModel,
       })
