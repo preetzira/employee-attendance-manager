@@ -23,6 +23,7 @@ const {
   employeesRouter,
   attendanceRouter,
   adminRouter,
+  pushNotificationRouter,
 } = require("./routes")
 require("./services/connectDatabase")
 const authMiddleware = require("./middlewares/authentication")
@@ -59,6 +60,7 @@ app.use(`/${API_VERSION}/leave`, leavesRouter)
 app.use(`/${API_VERSION}/leave_type`, leaveTypesRouter)
 app.use(`/${API_VERSION}/leave_application`, leaveApplicationsRouter)
 app.use(`/${API_VERSION}/holiday`, holidaysRouter)
+app.use(`/${API_VERSION}/push_notification`, pushNotificationRouter)
 
 app.use(globalErrorHandler)
 

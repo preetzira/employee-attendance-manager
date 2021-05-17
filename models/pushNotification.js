@@ -1,22 +1,22 @@
 const mongoose = require("mongoose")
 const pushNotificationSchema = mongoose.Schema(
   {
-    subscription:{
+    subscription: {
       type: Object,
-      required:true,
-      endpoint:String,
-      keys:{
+      required: true,
+      endpoint: String,
+      keys: {
         type: Object,
         auth: String,
-        p256dh: String
-      }
+        p256dh: String,
+      },
     },
-    isActive:{
+    isActive: {
       type: Boolean,
       default: true,
-      required: true
+      required: true,
     },
-    platform:{
+    platform: {
       type: Object,
       required: false,
       os: String,

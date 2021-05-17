@@ -40,6 +40,7 @@
     "nodemailer": "^6.5.0",
     "swagger-jsdoc": "^5.0.1",
     "swagger-ui-express": "^4.1.6",
+    "web-push": "^3.4.4",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.2"
   },

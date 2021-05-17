@@ -26,5 +26,5 @@ async function sendPushNotification({ subscription, payload }) {
 }
 
 module.exports = {
-  sendPushNotification
+  sendPushNotification,
 }
