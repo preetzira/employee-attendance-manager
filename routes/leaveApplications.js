@@ -52,7 +52,7 @@ const { leaveApplicationRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the record to be viewed.
+ *        description: LeaveApplication's `_id` of the record to be viewed.
  *     responses:
  *       200:
  *         content:
@@ -70,7 +70,7 @@ const { leaveApplicationRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: false
- *        description: ID of the records to be updated.
+ *        description: LeaveApplication's `_id` of the records to be updated.
  *     requestBody:
  *       required: true
  *       content:
@@ -97,7 +97,7 @@ const { leaveApplicationRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the records to be updated.
+ *        description: LeaveApplication's `_id` of the record to be updated.
  *      - in: body
  *        name: cancellationReason
  *        type: string
@@ -121,8 +121,8 @@ const { leaveApplicationRoutes } = require("./CONSTANTS")
  *      - in: path
  *        name: id
  *        type: string
- *        required: false
- *        description: ID of the records to be updated.
+ *        required: true
+ *        description: LeaveApplication's `_id` of the records to be updated.
  *     responses:
  *       200:
  *         description: Record updated successfully

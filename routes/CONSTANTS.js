@@ -92,6 +92,14 @@ const attendanceRoutes = [
   // { path: "/:id", method: "delete", controller: "delete" }, // for employees
 ]
 
+const pushNotificationRoutes = [
+  { path: "/list", method: "get", controller: "list" }, // for HR or ADMIN
+  { path: "/subscribe/:id?", method: "post", controller: "subscribe" }, // for everyone
+  { path: "/unsubscribe/:id?", method: "put", controller: "unsubscribe" }, // for everyone
+  { path: "/push", method: "post", controller: "push" }, // for HR or ADMIN
+  { path: "/:id", method: "delete", controller: "delete" }, // for HR or ADMIN
+]
+
 module.exports = {
   employeeRoutes,
   adminRoutes,
@@ -102,4 +110,5 @@ module.exports = {
   leaveTypeRoutes,
   leaveRoutes,
   attendanceRoutes,
+  pushNotificationRoutes,
 }

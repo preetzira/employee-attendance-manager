@@ -50,7 +50,7 @@ const { holidayRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the record to be viewed.
+ *        description: Holiday's `_id` of the record to be viewed.
  *     responses:
  *       200:
  *         content:
@@ -69,7 +69,7 @@ const { holidayRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the record to be updated. HR/Admin only.
+ *        description: Holiday's `_id` of the record to be updated. HR/Admin only.
  *     requestBody:
  *       required: true
  *       content:
@@ -94,7 +94,7 @@ const { holidayRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the record to be deleted. HR/Admin only.
+ *        description: Holiday's `_id` of the record to be deleted. HR/Admin only.
  *     responses:
  *       200:
  *         description: Record deleted successfully

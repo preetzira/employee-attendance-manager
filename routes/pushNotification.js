@@ -47,7 +47,7 @@ const { pushNotificationRoutes } = require("./CONSTANTS")
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/CreateSuccessResponseObject'
- *          
+ *
  * /push_notification/unsubscribe/{id}:
  *   put:
  *     security:
@@ -68,7 +68,7 @@ const { pushNotificationRoutes } = require("./CONSTANTS")
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/UpdateSuccessResponseObject'
- * 
+ *
  * /push_notification/push:
  *   post:
  *     security:
@@ -86,7 +86,7 @@ const { pushNotificationRoutes } = require("./CONSTANTS")
  *     responses:
  *       200:
  *         description: Notification sent successfully
- * 
+ *
  * /push_notification/{id}:
  *   delete:
  *     security:

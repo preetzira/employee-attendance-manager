@@ -85,7 +85,7 @@ const { employeeRoutes } = require("./CONSTANTS")
  *        name: employeeId
  *        type: string
  *        required: false
- *        description: ID of the record to change password for. HR/Admin only.
+ *        description: Employee's `_id` of the record to change password for. HR/Admin only.
  *     requestBody:
  *       required: true
  *       content:
@@ -204,7 +204,7 @@ const { employeeRoutes } = require("./CONSTANTS")
  *        name: employeeId
  *        type: string
  *        required: false
- *        description: ID of the record to be viewed. HR/Admin only.
+ *        description: Employee's `_id` of the record to be viewed. HR/Admin only.
  *     responses:
  *       200:
  *         content:
@@ -223,7 +223,7 @@ const { employeeRoutes } = require("./CONSTANTS")
  *        name: employeeId
  *        type: string
  *        required: false
- *        description: ID of the record to be updated. HR/Admin only.
+ *        description: Employee's `_id` of the record to be updated. HR/Admin only.
  *     requestBody:
  *       required: true
  *       content:
@@ -248,7 +248,7 @@ const { employeeRoutes } = require("./CONSTANTS")
  *        name: employeeId
  *        type: string
  *        required: true
- *        description: ID of the records to be deleted. HR/Admin only.
+ *        description: Employee's `_id` of the records to be deleted. HR/Admin only.
  *     responses:
  *       200:
  *         description: Record deleted successfully

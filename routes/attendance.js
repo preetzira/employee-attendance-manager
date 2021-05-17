@@ -17,7 +17,7 @@ const { attendanceRoutes } = require("./CONSTANTS")
  *        name: employeeId
  *        type: string
  *        required: false
- *        description: ID of employee to fetch attendance of. HR/Admin only.
+ *        description: Employee's `_id` to fetch attendance of. HR/Admin only.
  *        example: 606c54c52329aa43a4096304
  *      - in: query
  *        name: from
@@ -52,7 +52,7 @@ const { attendanceRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the record to be viewed.
+ *        description: Attendance's `_id` of the record to be viewed.
  *     responses:
  *       200:
  *         content:
@@ -125,7 +125,7 @@ const { attendanceRoutes } = require("./CONSTANTS")
  *                employeeId:
  *                  type: string
  *                  required: true
- *                  description: ID of the employee to be marked absent.
+ *                  description: Employee's `_id` who is to be marked absent.
  *                  example: 606d60720dcabc3d843a923e
  *     responses:
  *       201:
@@ -152,7 +152,7 @@ const { attendanceRoutes } = require("./CONSTANTS")
  *                employeeId:
  *                  type: string
  *                  required: true
- *                  description: ID of the employee to be marked on leave.
+ *                  description: Employee's `_id` who is to be marked on leave.
  *                  example: 606d60720dcabc3d843a923e
  *     responses:
  *       201:

@@ -7,6 +7,7 @@ const holidaysRouter = require("./holidays")
 const employeesRouter = require("./employees")
 const attendanceRouter = require("./attendance")
 const adminRouter = require("./admin")
+const pushNotificationRouter = require("./pushNotification")
 
 /**
  * @swagger
@@ -193,11 +194,13 @@ const adminRouter = require("./admin")
  *         fromDate:
  *           type: string
  *           required: true
+ *           format: date
  *           description: Date from which the leave application is applicable.
  *           example: 2021-04-05T00:00:00.000Z
  *         toDate:
  *           type: string
  *           required: false
+ *           format: date
  *           description: Date to which the leave application is applicable.
  *           example: 2021-04-08T00:00:00.000Z
  *         reason:
@@ -221,11 +224,13 @@ const adminRouter = require("./admin")
  *         fromDate:
  *           type: string
  *           required: true
+ *           format: date
  *           description: Date from which the holiday will start.
  *           example: 2021-04-04T00:00:00.000Z
  *         toDate:
  *           type: string
  *           required: true
+ *           format: date
  *           description: Date to which the holiday will end.
  *           example: 2021-04-04T23:59:59.000Z
  *
@@ -242,8 +247,10 @@ const adminRouter = require("./admin")
  *           type: string
  *         createdAt:
  *           type: string
+ *           format: date
  *         updatedAt:
  *           type: string
+ *           format: date
  *
  *     HolidayResponseObject:
  *       type: object
@@ -256,12 +263,16 @@ const adminRouter = require("./admin")
  *           type: string
  *         fromDate:
  *           type: string
+ *           format: date
  *         toDate:
  *           type: string
+ *           format: date
  *         createdAt:
  *           type: string
+ *           format: date
  *         updatedAt:
  *           type: string
+ *           format: date
  *         createdBy:
  *           type: object
  *           properties:
@@ -294,12 +305,14 @@ const adminRouter = require("./admin")
  *           required: false
  *         createdAt:
  *           type: string
+ *           format: date
  *         createdBy:
  *           type: object
  *         createdByOnModel:
  *           type: string
  *         updatedAt:
  *           type: string
+ *           format: date
  *         updatedBy:
  *           type: object
  *         updatedByOnModel:
@@ -327,8 +340,10 @@ const adminRouter = require("./admin")
  *               type: string
  *         fromDate:
  *           type: string
+ *           format: date
  *         toDate:
  *           type: string
+ *           format: date
  *         appliedLeavesCount:
  *           type: number
  *         reason:
@@ -360,8 +375,10 @@ const adminRouter = require("./admin")
  *               type: string
  *         createdAt:
  *           type: string
+ *           format: date
  *         updatedAt:
  *           type: string
+ *           format: date
  *         approvedBy:
  *           type: object
  *           properties:
@@ -412,6 +429,7 @@ const adminRouter = require("./admin")
  *               type: string
  *         createdAt:
  *           type: string
+ *           format: date
  *         createdBy:
  *           type: object
  *           properties:
@@ -425,6 +443,7 @@ const adminRouter = require("./admin")
  *           type: string
  *         updatedAt:
  *           type: string
+ *           format: date
  *         updatedBy:
  *           type: object
  *           properties:
@@ -486,8 +505,10 @@ const adminRouter = require("./admin")
  *           type: string
  *         createdAt:
  *           type: string
+ *           format: date
  *         updatedAt:
  *           type: string
+ *           format: date
  *
  *     LoginSuccessResponseObject:
  *       type: object
@@ -499,6 +520,91 @@ const adminRouter = require("./admin")
  *           type: integer
  *           description: The expiration time of the token.
  *           example: 3600
+ *
+ *     PushNotificationPayloadObject:
+ *       type: object
+ *       properties:
+ *         payload:
+ *           type: object
+ *           properties:
+ *             title:
+ *               type: string
+ *               example: Test
+ *
+ *     PushNotificationSubscribeRequestObject:
+ *       type: object
+ *       properties:
+ *         subscription:
+ *           type: object
+ *           properties:
+ *             endpoint:
+ *               type: string
+ *               example: https://updates.push.services.mozilla.com/wpush/v2/gAAAAABgoemO5shIBW5cfqsW8BZR3C7TReUqEntK8oFoN1FhFkoIXthIYG6Yfg_bXtlfrTga4dxQ3bWphYjoIzQ3P15VjZNEM4qR4OYfKONy1fVXkSZs5Prj_XH7GcfITK-LwH2hDHNJ4mvFNCKXNtANrofwR9AYD9iM1Ne6pANOusjPGvioMPg
+ *             keys:
+ *               type: object
+ *               properties:
+ *                 auth:
+ *                   type: string
+ *                   example: eDY4SZwJnj0OUYYgo6awng
+ *                 p256dh:
+ *                   type: string
+ *                   example: BF_yB_IU-j7gvzFCrPCs5BwfzPUfP0zE4__TpkhJRVqVZ9OT4sQ8MuDBPAwhq2jl_O5WfHTOCvb1vNZdTJ0qyV8
+ *         platform:
+ *           type: object
+ *           properties:
+ *             os:
+ *               type: string
+ *               example: Window 10 pro
+ *             osVersion:
+ *               type: string
+ *               example: 20H2
+ *             browser:
+ *               type: string
+ *               example: Firefox
+ *             browserVersion:
+ *               type: string
+ *               example: 77.0
+ *             device:
+ *               type: string
+ *               example: iPad
+ *             deviceManufacturer:
+ *               type: string
+ *               example: Apple
+ *             layout:
+ *               type: string
+ *               example: WebKit
+ *
+ *     PushNotificationResponseObject:
+ *       type: object
+ *       properties:
+ *         subscription:
+ *           type: object
+ *           properties:
+ *             endpoint:
+ *               type: string
+ *               example: https://updates.push.services.mozilla.com/wpush/v2/gAAAAABgoemO5shIBW5cfqsW8BZR3C7TReUqEntK8oFoN1FhFkoIXthIYG6Yfg_bXtlfrTga4dxQ3bWphYjoIzQ3P15VjZNEM4qR4OYfKONy1fVXkSZs5Prj_XH7GcfITK-LwH2hDHNJ4mvFNCKXNtANrofwR9AYD9iM1Ne6pANOusjPGvioMPg
+ *             keys:
+ *               type: object
+ *               properties:
+ *                 auth:
+ *                   type: string
+ *                   example: eDY4SZwJnj0OUYYgo6awng
+ *                 p256dh:
+ *                   type: string
+ *                   example: BF_yB_IU-j7gvzFCrPCs5BwfzPUfP0zE4__TpkhJRVqVZ9OT4sQ8MuDBPAwhq2jl_O5WfHTOCvb1vNZdTJ0qyV8
+ *         isActive:
+ *           type: boolean
+ *           example: false
+ *         createdBy:
+ *           type: object
+ *           schema:
+ *             $ref: 'EmployeeResponseObject'
+ *         onModel:
+ *           type: string
+ *           value:
+ *             oneOf:
+ *               - Admin
+ *               - Employee
  *
  *     EmailVerifySuccessResponseObject:
  *       type: object
@@ -564,4 +670,5 @@ module.exports = {
   employeesRouter,
   attendanceRouter,
   adminRouter,
+  pushNotificationRouter,
 }

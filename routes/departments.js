@@ -54,7 +54,7 @@ const { departmentRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the record to be viewed.
+ *        description: Department's `_id` of the record to be viewed.
  *     responses:
  *       200:
  *         content:
@@ -72,7 +72,7 @@ const { departmentRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the record to be updated. HR/Admin only.
+ *        description: Department's `_id` of the record to be updated. HR/Admin only.
  *     requestBody:
  *       required: true
  *       content:
@@ -97,7 +97,7 @@ const { departmentRoutes } = require("./CONSTANTS")
  *        name: id
  *        type: string
  *        required: true
- *        description: ID of the record to be deleted. HR/Admin only.
+ *        description: Department's `_id` of the record to be deleted. HR/Admin only.
  *     responses:
  *       200:
  *         description: Record deleted successfully
