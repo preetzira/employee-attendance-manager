@@ -41,7 +41,6 @@ module.exports = function () {
       })
       return successResponse(res, responseFlags.CREATED, {
         message: "Record created successfully",
-        status: 201,
       })
     },
     view: async function (req, res) {
@@ -82,7 +81,6 @@ module.exports = function () {
       if (!holiday) throw new CustomError("NOT_FOUND", "No record found.")
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record updated successfully",
-        status: 200,
       })
     },
     delete: async function (req, res) {
@@ -93,7 +91,6 @@ module.exports = function () {
       if (!deletedRecord) throw new CustomError("NOT_FOUND", "No record found.")
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record deleted successfully",
-        status: 200,
       })
     },
   }

@@ -51,7 +51,6 @@ module.exports = function () {
       )
       return successResponse(res, responseFlags.CREATED, {
         message: "Record created successfully",
-        status: 201,
       })
     },
 
@@ -81,7 +80,6 @@ module.exports = function () {
         throw new CustomError("BAD_REQUEST", "Kindly punch-in first.")
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record updated successfully",
-        status: 200,
       })
     },
 
@@ -127,7 +125,6 @@ module.exports = function () {
       )
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record created successfully",
-        status: 201,
       })
     },
   }

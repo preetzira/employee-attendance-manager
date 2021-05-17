@@ -73,7 +73,6 @@ module.exports = function () {
       }).save()
       return successResponse(res, responseFlags.CREATED, {
         message: "Record created successfully",
-        status: 201,
       })
     },
 
@@ -124,7 +123,6 @@ module.exports = function () {
         throw new CustomError("NOT_FOUND", "No record found.")
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record updated successfully",
-        status: 200,
       })
     },
 

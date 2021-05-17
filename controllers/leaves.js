@@ -56,7 +56,6 @@ module.exports = function () {
         await session.endSession()
         return successResponse(res, responseFlags.CREATED, {
           message: "Record created successfully",
-          status: 201,
         })
       } catch (error) {
         console.log(error)
@@ -97,7 +96,6 @@ module.exports = function () {
       if (!leave) throw new CustomError("NOT_FOUND", "No record found.")
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record updated successfully",
-        status: 200,
       })
     },
 
@@ -109,7 +107,6 @@ module.exports = function () {
       if (!deletedRecord) throw new CustomError("NOT_FOUND", "No record found.")
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record deleted successfully",
-        status: 200,
       })
     },
 

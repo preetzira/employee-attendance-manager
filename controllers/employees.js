@@ -115,7 +115,6 @@ module.exports = function () {
       console.log({ message, info })
       return successResponse(res, responseFlags.CREATED, {
         message: "Record created successfully",
-        status: 201,
       })
     },
 
@@ -162,6 +161,11 @@ module.exports = function () {
         queryObject["tokens.resetPasswordToken"] = token
       }
 
+      if (!queryObject._id || queryObject._id === ",")
+        throw new CustomError(
+          "BAD_REQUEST",
+          "Required parameter 'employeeId' is malformed or missing",
+        )
       const employee = await Employees.findOne(queryObject)
       // Check for reset password scenario where token is either invalid or expired
       if (
@@ -253,7 +257,7 @@ module.exports = function () {
 
       const queryObject = {}
 
-      if (req.isHR() || req.isAdmin()) {
+      if (isHrOrAdmin) {
         delete updateObject.password
         updateObject.code = code
         updateObject.email = email
@@ -265,6 +269,11 @@ module.exports = function () {
         queryObject._id = req.params.employeeId
       } else queryObject._id = req.session.user._id
 
+      if (!queryObject._id || queryObject._id === ",")
+        throw new CustomError(
+          "BAD_REQUEST",
+          "Required parameter 'employeeId' is malformed or missing",
+        )
       const employee = await Employees.findOne(queryObject)
       if (
         (employee._id =
@@ -276,13 +285,17 @@ module.exports = function () {
       await employee.save()
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record updated successfully",
-        status: 200,
       })
     },
 
     view: async function (req, res) {
       const isHrOrAdmin = req.isAdmin() || req.isHR()
       const id = isHrOrAdmin ? req.params.employeeId : req.session.user._id
+      if (!id || id === ",")
+        throw new CustomError(
+          "BAD_REQUEST",
+          "Required parameters 'employeeId' is malformed or missing",
+        )
       const selectEmployeeFields = isHrOrAdmin
         ? "-password -tokens"
         : "-password -tokens -isDeleted"
@@ -323,7 +336,6 @@ module.exports = function () {
       })
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Record deleted successfully",
-        status: 200,
       })
     },
 
@@ -361,7 +373,6 @@ module.exports = function () {
       console.log({ message, info })
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Verification email sent successfully",
-        status: 200,
       })
     },
 
@@ -384,7 +395,6 @@ module.exports = function () {
       await employee.save()
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Email verified successfully",
-        status: 200,
       })
     },
 
@@ -422,7 +432,6 @@ module.exports = function () {
       console.log({ message, info })
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Password reset link has been sent to your email",
-        status: 200,
       })
     },
 

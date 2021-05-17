@@ -8,33 +8,50 @@ module.exports = function () {
     list: async function (req, res) {
       if (!(req.isAdmin() || req.isHR()))
         throw new CustomError("FORBIDDEN", "Operation not allowed")
-        const pushNotificationSubscribers = await PushNotification.find({})
-        .populate([
-          {
-            path: "createdBy",
-            select: "department",
-            model: "Employee",
-            populate:{ path: "department", model: "Department", select: "title code" },
+      const pushNotificationSubscribers = await PushNotification.find(
+        {},
+      ).populate([
+        {
+          path: "createdBy",
+          select: "department",
+          model: "Employee",
+          populate: {
+            path: "department",
+            model: "Department",
+            select: "title code",
           },
-          {
-            path: "createdBy",
-            select: "-_id fullname code designation",
-            model: "Employee",
-            populate:{ path: "designation", model: "Designation", select: "title code" },
+        },
+        {
+          path: "createdBy",
+          select: "-_id fullname code designation",
+          model: "Employee",
+          populate: {
+            path: "designation",
+            model: "Designation",
+            select: "title code",
           },
-          {
-            path: "updatedBy",
-            select: "department",
-            model: "Employee",
-            populate:{ path: "department", model: "Department", select: "title code" },
+        },
+        {
+          path: "updatedBy",
+          select: "department",
+          model: "Employee",
+          populate: {
+            path: "department",
+            model: "Department",
+            select: "title code",
           },
-          {
-            path: "updatedBy",
-            select: "-_id fullname code designation",
-            model: "Employee",
-            populate:{ path: "designation", model: "Designation", select: "title code" },
+        },
+        {
+          path: "updatedBy",
+          select: "-_id fullname code designation",
+          model: "Employee",
+          populate: {
+            path: "designation",
+            model: "Designation",
+            select: "title code",
           },
-        ])
+        },
+      ])
       return successResponse(res, responseFlags.SUCCESS, {
         pushNotificationSubscribers,
       })
@@ -110,22 +127,28 @@ module.exports = function () {
       const subscribers = await PushNotification.find(
         queryObject,
         "subscription createdBy",
-      ).populate(
-        [
-          {
-            path: "createdBy",
-            select: "department",
-            model: "Employee",
-            populate:{ path: "department", model: "Department", select: "title code" },
+      ).populate([
+        {
+          path: "createdBy",
+          select: "department",
+          model: "Employee",
+          populate: {
+            path: "department",
+            model: "Department",
+            select: "title code",
           },
-          {
-            path: "createdBy",
-            select: "-_id fullname code designation",
-            model: "Employee",
-            populate:{ path: "designation", model: "Designation", select: "title code" },
+        },
+        {
+          path: "createdBy",
+          select: "-_id fullname code designation",
+          model: "Employee",
+          populate: {
+            path: "designation",
+            model: "Designation",
+            select: "title code",
           },
-        ]
-      )
+        },
+      ])
       subscribers.forEach(({ subscription }) =>
         sendPushNotification({ subscription, payload }),
       )
