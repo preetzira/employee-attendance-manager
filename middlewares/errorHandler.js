@@ -5,7 +5,8 @@ const { errorResponse } = require("../utils/responseHelpers")
 module.exports = function errorHandler(error, req, res, next) {
   logger.error(
     `
-    \x1b[31m${error.stack}\x1b[0m
+    ErrorStack: \x1b[31m${error.stack}\x1b[0m
+    ErrorObject: \x1b[31m${JSON.stringify(error)}\x1b[0m
     Req.Body: ${JSON.stringify(req.body, replacer)}
     Req.Params: ${JSON.stringify(req.params, replacer)}
     Req.Query: ${JSON.stringify(req.query, replacer)}

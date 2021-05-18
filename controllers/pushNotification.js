@@ -151,19 +151,22 @@ module.exports = function () {
         },
       ])
       subscribers.forEach(({ subscription }) =>
-        sendPushNotification({ subscription, payload }).catch(async error=>{
-          if(error.statusCode === 410){
-            await PushNotification.findOneAndDelete({"subscription.endpoint":error.endpoint})
+        sendPushNotification({ subscription, payload }).catch(async (error) => {
+          if (error.statusCode === 410) {
+            await PushNotification.findOneAndDelete({
+              "subscription.endpoint": error.endpoint,
+            })
           } else {
             logger.error(
               `
-              \x1b[31m${error.stack}\x1b[0m
+              ErrorStack: \x1b[31m${error.stack}\x1b[0m
+              ErrorObject: \x1b[31m${JSON.stringify(error)}\x1b[0m
               Subscription: ${JSON.stringify(subscription)}
               Payload: ${JSON.stringify(payload)}
               `,
             )
           }
-        })
+        }),
       )
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Notification sent successfully",
