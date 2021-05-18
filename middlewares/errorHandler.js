@@ -7,11 +7,11 @@ module.exports = function errorHandler(error, req, res, next) {
     `
     ErrorStack: \x1b[31m${error.stack}\x1b[0m
     ErrorObject: \x1b[31m${JSON.stringify(error)}\x1b[0m
-    Req.Body: ${JSON.stringify(req.body, replacer)}
-    Req.Params: ${JSON.stringify(req.params, replacer)}
-    Req.Query: ${JSON.stringify(req.query, replacer)}
-    Req.Method: ${req.method}
-    Req.Path: ${req.path}
+    RequestBody: ${JSON.stringify(req.body, replacer)}
+    RequestParams: ${JSON.stringify(req.params, replacer)}
+    RequestQuery: ${JSON.stringify(req.query, replacer)}
+    RequestMethod: ${req.method}
+    RequestPath: ${req.path}
     `,
   )
   const flagName =
