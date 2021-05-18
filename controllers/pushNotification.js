@@ -1,6 +1,7 @@
 const PushNotification = require("../models/pushNotification")
 const { sendPushNotification } = require("../services/pushNotifications")
 const { responseFlags, CustomError } = require("../utils/constants")
+const logger = require("../utils/logger")
 const { successResponse } = require("../utils/responseHelpers")
 
 module.exports = function () {
@@ -150,7 +151,19 @@ module.exports = function () {
         },
       ])
       subscribers.forEach(({ subscription }) =>
-        sendPushNotification({ subscription, payload }),
+        sendPushNotification({ subscription, payload }).catch(async error=>{
+          if(error.statusCode === 410){
+            await PushNotification.findOneAndDelete({"subscription.endpoint":error.endpoint})
+          } else {
+            logger.error(
+              `
+              \x1b[31m${error.stack}\x1b[0m
+              Subscription: ${JSON.stringify(subscription)}
+              Payload: ${JSON.stringify(payload)}
+              `,
+            )
+          }
+        })
       )
       return successResponse(res, responseFlags.SUCCESS, {
         message: "Notification sent successfully",
