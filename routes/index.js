@@ -597,8 +597,6 @@ const pushNotificationRouter = require("./pushNotification")
  *           example: false
  *         createdBy:
  *           type: object
- *           schema:
- *             $ref: 'EmployeeResponseObject'
  *         onModel:
  *           type: string
  *           value:
@@ -623,9 +621,12 @@ const pushNotificationRouter = require("./pushNotification")
  *     CreateSuccessResponseObject:
  *       type: object
  *       properties:
- *         message:
- *           type: string
- *           description: Record created successfully.
+ *         data:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
+ *               description: Record created successfully.
  *         status:
  *           type: integer
  *           value: 201
@@ -636,9 +637,12 @@ const pushNotificationRouter = require("./pushNotification")
  *     UpdateSuccessResponseObject:
  *       type: object
  *       properties:
- *         message:
- *           type: string
- *           description: Record updated successfully.
+ *         data:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
+ *               description: Record updated successfully.
  *         status:
  *           type: integer
  *           value: 200
@@ -649,9 +653,12 @@ const pushNotificationRouter = require("./pushNotification")
  *     DeleteSuccessResponseObject:
  *       type: object
  *       properties:
- *         message:
- *           type: string
- *           description: Record deleted successfully.
+ *         data:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
+ *               description: Record deleted successfully.
  *         status:
  *           type: integer
  *           value: 200

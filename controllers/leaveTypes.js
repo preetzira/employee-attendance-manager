@@ -30,7 +30,6 @@ module.exports = function () {
       })
       return successResponse(res, responseFlags.CREATED, {
         message: "Record created successfully",
-        status: 201,
       })
     },
     view: async function (req, res) {

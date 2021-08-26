@@ -123,7 +123,7 @@ module.exports = function () {
         },
         { upsert: true, setDefaultsOnInsert: true },
       )
-      return successResponse(res, responseFlags.SUCCESS, {
+      return successResponse(res, responseFlags.CREATED, {
         message: "Record created successfully",
       })
     },

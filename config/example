@@ -1,0 +1,22 @@
+{
+  "test" : {
+    "name": "<APP_NAME>",
+    "port": <SERVER_PORT>,
+    "mode": "<CONFIG_MODE>",
+    "protocol": "http",
+    "serverUrl": "localhost",
+    "database": {
+      "host": "<HOSTNAME>",
+      "user": "<USERNAME>",
+      "password": "<PASSWORD>",
+      "database": "<DATABASE_NAME>"
+    },
+    "email": {
+      "service":"<SERVICE_NAME>",
+      "host": "<EMAIL_HOST>",
+      "port": "<EMAIL_SERVICE_PORT>",
+      "username": "<EMAIL_ADDRESS>",
+      "password": "<PASSWORD>"
+    }
+  }
+}
