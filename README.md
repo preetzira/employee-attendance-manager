@@ -7,7 +7,7 @@ VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, VAPID_EMAIL
 ```
 ---
 ### Configuration for ```config``` files
-create two files in /config directory ```development.json```(for dev environment) and ```test.json```(for test environment)
+Create two files in ***/config*** directory ```development.json```(for dev environment) and ```test.json```(for test environment)
 ```
 {
   <"dev" or "test"> : {
@@ -32,3 +32,6 @@ create two files in /config directory ```development.json```(for dev environment
   }
 }
 ```
+---
+### Cofiguration for ```key``` files
+Add RSA key pair named ```jwt-private.key``` and ```jwt-public.key``` in ***/keys*** directory

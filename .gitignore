@@ -20,6 +20,9 @@ coverage
 # configuration files
 /config/*.json
 
+# RSA key files
+/keys/*.key
+
 # nyc test coverage
 .nyc_output
 
