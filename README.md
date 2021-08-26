@@ -33,5 +33,5 @@ Create two files in ***/config*** directory ```development.json```(for dev envir
 }
 ```
 ---
-### Cofiguration for ```key``` files
+### Configuration for ```key``` files
 Add RSA key pair named ```jwt-private.key``` and ```jwt-public.key``` in ***/keys*** directory
